@@ -1,0 +1,75 @@
+.currentCity {
+  font-size: 32px;
+  margin-top: 30px;
+  position: relative;
+  text-align: right;
+}
+.currentDate {
+  font-size: 22px;
+  position: relative;
+  text-align: right;
+}
+.temp {
+  font-size: 40px;
+  position: relative;
+  text-align: center;
+}
+.humidity .wind {
+  font-size: 18px;
+  position: relative;
+  text-align: center;
+}
+.box {
+  display: flex;
+  align-items: center;
+}
+.container {
+  border: 1px solid gray;
+  max-width: 600px;
+  background-color: #f0f8ff;
+}
+
+.current-location {
+  margin-top: 18px;
+  margin-bottom: -18px;
+  display: block;
+}
+
+.col-sm-2 {
+  text-align: center;
+}
+
+.card-text {
+  text-align: center;
+}
+
+.icon {
+  width: 50px;
+  padding: 20px 0px;
+}
+
+.mainicon {
+  margin: 0 auto;
+  width: 200px;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.search {
+  padding: 30px;
+}
+
+#day-card {
+  width: fit-content;
+  box-shadow: 10px 5px 5px gray;
+  height: max-content;
+}
+
+form {
+  box-shadow: 10px 5px 5px gray;
+}
+
+.card-body {
+  height: 250px;
+  width: 75px;
+}
