@@ -54,10 +54,17 @@ function searchCity(event) {
     currentHumidity.innerHTML = `Humidity: ${humidity}%`;
     let currentTemperature = Math.round(response.data.main.temp);
     currentTemp = document.querySelector(".temp");
-    currentTemp.innerHTML = `${currentTemperature}°`;
+    currentTemp.innerHTML = `${currentTemperature}`;
     let windSpeed = response.data.wind.speed;
     currentWindSpeed = document.querySelector(".wind");
     currentWindSpeed.innerHTML = `Wind Speed: ${windSpeed} km/s`;
+    let currentMainIcon = document.querySelector(".mainicon");
+    currentMainIcon.setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
+    let descriptionElement = document.querySelector(".description");
+    descriptionElement.innerHTML = response.data.weather[0].description;
   }
   axios.get(`${apiUrl}`).then(showCurrentTemp);
 }
@@ -73,7 +80,7 @@ function showWeather(response) {
   currentHumidity.innerHTML = `Humidity: ${humidity}%`;
   let currentTemperature = Math.round(response.data.main.temp);
   currentTemp = document.querySelector(".temp");
-  currentTemp.innerHTML = `${currentTemperature}°`;
+  currentTemp.innerHTML = `${currentTemperature}`;
   let windSpeed = response.data.wind.speed;
   currentWindSpeed = document.querySelector(".wind");
   currentWindSpeed.innerHTML = `Wind Speed: ${windSpeed} km/s`;
@@ -83,8 +90,9 @@ function showWeather(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   let descriptionElement = document.querySelector(".description");
-  descriptionElement = response.data.weather[0].description;
+  descriptionElement.innerHTML = response.data.weather[0].description;
 }
+
 function currentLocation(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
