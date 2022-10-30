@@ -65,6 +65,8 @@ function searchCity(event) {
     );
     let descriptionElement = document.querySelector(".description");
     descriptionElement.innerHTML = response.data.weather[0].description;
+
+    celsiusTemp = response.data.main.temp;
   }
   axios.get(`${apiUrl}`).then(showCurrentTemp);
 }
@@ -91,6 +93,8 @@ function showWeather(response) {
   );
   let descriptionElement = document.querySelector(".description");
   descriptionElement.innerHTML = response.data.weather[0].description;
+
+  celsiusTemp = response.data.main.temp;
 }
 
 function currentLocation(position) {
@@ -108,14 +112,14 @@ function getCurrentTempData(event) {
 let currentLocationButton = document.querySelector("button");
 currentLocationButton.addEventListener("click", getCurrentTempData);
 
-let celsiusTemp = function displayFahrenheitTemp(event) {
+function displayFahrenheitTemp(event) {
   event.preventDefault();
   let fahrTempElement = document.querySelector(".temp");
   let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
   fahrTempElement.innerHTML = Math.round(fahrenheitTemp);
   fahrenheitUnitLink.classList.add("active");
   celsiusUnitLink.classList.remove("active");
-};
+}
 
 let fahrenheitUnitLink = document.querySelector("#fahrenheit");
 fahrenheitUnitLink.addEventListener("click", displayFahrenheitTemp);
@@ -130,3 +134,5 @@ function displayCelsiusTemp(event) {
 
 let celsiusUnitLink = document.querySelector("#celsius");
 celsiusUnitLink.addEventListener("click", displayCelsiusTemp);
+
+let celsiusTemp = null;
