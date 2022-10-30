@@ -82,6 +82,8 @@ function showWeather(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  let descriptionElement = document.querySelector(".description");
+  descriptionElement = response.data.weather[0].description;
 }
 function currentLocation(position) {
   let latitude = position.coords.latitude;
