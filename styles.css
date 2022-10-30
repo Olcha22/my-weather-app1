@@ -13,6 +13,7 @@
   font-size: 40px;
   position: relative;
   text-align: center;
+  top: -10px;
 }
 .humidity .wind {
   font-size: 18px;
@@ -77,4 +78,9 @@ form {
 .source-link {
   margin-top: 15px;
   margin-bottom: -15px;
+}
+
+.units {
+  position: relative;
+  top: -26px;
 }
