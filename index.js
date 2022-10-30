@@ -107,3 +107,26 @@ function getCurrentTempData(event) {
 
 let currentLocationButton = document.querySelector("button");
 currentLocationButton.addEventListener("click", getCurrentTempData);
+
+let celsiusTemp = function displayFahrenheitTemp(event) {
+  event.preventDefault();
+  let fahrTempElement = document.querySelector(".temp");
+  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
+  fahrTempElement.innerHTML = Math.round(fahrenheitTemp);
+  fahrenheitUnitLink.classList.add("active");
+  celsiusUnitLink.classList.remove("active");
+};
+
+let fahrenheitUnitLink = document.querySelector("#fahrenheit");
+fahrenheitUnitLink.addEventListener("click", displayFahrenheitTemp);
+
+function displayCelsiusTemp(event) {
+  event.preventDefault();
+  let celsTempElement = document.querySelector(".temp");
+  celsTempElement.innerHTML = Math.round(celsiusTemp);
+  celsiusUnitLink.classList.add("active");
+  fahrenheitUnitLink.classList.remove("active");
+}
+
+let celsiusUnitLink = document.querySelector("#celsius");
+celsiusUnitLink.addEventListener("click", displayCelsiusTemp);

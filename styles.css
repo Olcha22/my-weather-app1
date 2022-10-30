@@ -84,3 +84,9 @@ form {
   position: relative;
   top: -26px;
 }
+
+.units .active {
+  color: #000000;
+  cursor: default;
+  text-decoration: none;
+}
