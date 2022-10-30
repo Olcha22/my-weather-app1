@@ -47,6 +47,7 @@ function searchCity(event) {
     alert("Please, enter city name");
   }
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchInput.value}&units=metric&appid=017d56650cd168d68067850318775d43`;
+
   function showCurrentTemp(response) {
     let humidity = Math.round(response.data.main.humidity);
     currentHumidity = document.querySelector(".humidity");
@@ -76,6 +77,11 @@ function showWeather(response) {
   let windSpeed = response.data.wind.speed;
   currentWindSpeed = document.querySelector(".wind");
   currentWindSpeed.innerHTML = `Wind Speed: ${windSpeed} km/s`;
+  let currentMainIcon = document.querySelector(".mainicon");
+  currentMainIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 function currentLocation(position) {
   let latitude = position.coords.latitude;
