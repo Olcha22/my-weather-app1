@@ -90,3 +90,7 @@ form {
   cursor: default;
   text-decoration: none;
 }
+
+span {
+  text-transform: capitalize;
+}
