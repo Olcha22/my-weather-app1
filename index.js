@@ -70,6 +70,7 @@ function searchCity(event) {
   }
   axios.get(`${apiUrl}`).then(showCurrentTemp);
 }
+
 let searchButton = document.querySelector("#search-city");
 searchButton.addEventListener("click", searchCity);
 
