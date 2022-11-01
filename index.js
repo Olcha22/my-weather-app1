@@ -144,3 +144,7 @@ celsiusUnitLink.addEventListener("click", displayCelsiusTemp);
 let celsiusTemp = null;
 
 search("Kyiv");
+
+function displayForecast() {
+  let;
+}

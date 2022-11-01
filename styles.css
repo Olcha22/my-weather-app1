@@ -73,6 +73,11 @@ form {
 .card-body {
   height: 250px;
   width: 75px;
+  colot: #0000;
+}
+
+.forecast-temperature-night {
+  opacity: 0.5;
 }
 
 .source-link {
