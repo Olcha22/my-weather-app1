@@ -146,5 +146,29 @@ let celsiusTemp = null;
 search("Kyiv");
 
 function displayForecast() {
-  let;
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `          <div class="col-sm-2">
+                  <div class="card" id="day-card">
+                    <div class="card-body">
+                      <h5 class="card-title">${day}</h5>
+                      <img class="icon" src="images/rainy.JPG" alt="" />
+                      <div class="forecast-temperature-day">
+                        13° </div>
+                        <div class="forecast-temperature-night">
+                        8° </div>
+                    </div>
+                  </div>
+                </div>
+                `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
 }
+
+displayForecast();

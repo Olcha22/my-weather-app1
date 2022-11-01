@@ -71,9 +71,9 @@ form {
 }
 
 .card-body {
-  height: 250px;
+  height: 200px;
   width: 75px;
-  colot: #0000;
+  color: #0000;
 }
 
 .forecast-temperature-night {
