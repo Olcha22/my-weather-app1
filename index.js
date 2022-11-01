@@ -37,38 +37,43 @@ let months = [
 let month = months[now.getMonth()];
 h2.innerHTML = `${date} ${month} ${year} ${hours}:${minutes}`;
 
+function showCurrentTemp(response) {
+  let humidity = Math.round(response.data.main.humidity);
+  currentHumidity = document.querySelector(".humidity");
+  currentHumidity.innerHTML = `Humidity: ${humidity}%`;
+  let currentTemperature = Math.round(response.data.main.temp);
+  currentTemp = document.querySelector(".temp");
+  currentTemp.innerHTML = `${currentTemperature}`;
+  let windSpeed = response.data.wind.speed;
+  currentWindSpeed = document.querySelector(".wind");
+  currentWindSpeed.innerHTML = `Wind Speed: ${windSpeed} km/s`;
+  let currentMainIcon = document.querySelector(".mainicon");
+  currentMainIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  let descriptionElement = document.querySelector(".description");
+  descriptionElement.innerHTML = response.data.weather[0].description;
+  let cityName = response.data.name;
+  let currentCityName = document.querySelector("h1");
+  currentCityName.innerHTML = `Weather in <strong>${cityName}</strong>`;
+
+  celsiusTemp = response.data.main.temp;
+}
+function search(city) {
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=017d56650cd168d68067850318775d43`;
+  axios.get(`${apiUrl}`).then(showCurrentTemp);
+}
 function searchCity(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#city-input");
+  search(searchInput.value);
   let h1 = document.querySelector("h1");
   if (searchInput.value) {
     h1.innerHTML = `Weather in <strong>${searchInput.value}</strong>`;
   } else {
     alert("Please, enter city name");
   }
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchInput.value}&units=metric&appid=017d56650cd168d68067850318775d43`;
-
-  function showCurrentTemp(response) {
-    let humidity = Math.round(response.data.main.humidity);
-    currentHumidity = document.querySelector(".humidity");
-    currentHumidity.innerHTML = `Humidity: ${humidity}%`;
-    let currentTemperature = Math.round(response.data.main.temp);
-    currentTemp = document.querySelector(".temp");
-    currentTemp.innerHTML = `${currentTemperature}`;
-    let windSpeed = response.data.wind.speed;
-    currentWindSpeed = document.querySelector(".wind");
-    currentWindSpeed.innerHTML = `Wind Speed: ${windSpeed} km/s`;
-    let currentMainIcon = document.querySelector(".mainicon");
-    currentMainIcon.setAttribute(
-      "src",
-      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-    );
-    let descriptionElement = document.querySelector(".description");
-    descriptionElement.innerHTML = response.data.weather[0].description;
-
-    celsiusTemp = response.data.main.temp;
-  }
-  axios.get(`${apiUrl}`).then(showCurrentTemp);
 }
 
 let searchButton = document.querySelector("#search-city");
@@ -137,3 +142,5 @@ let celsiusUnitLink = document.querySelector("#celsius");
 celsiusUnitLink.addEventListener("click", displayCelsiusTemp);
 
 let celsiusTemp = null;
+
+search("Kyiv");
