@@ -99,3 +99,7 @@ form {
 span {
   text-transform: capitalize;
 }
+
+.wind {
+  text-transform: lowercase;
+}

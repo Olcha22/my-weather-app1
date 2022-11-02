@@ -46,7 +46,7 @@ function showCurrentTemp(response) {
   currentTemp.innerHTML = `${currentTemperature}`;
   let windSpeed = response.data.wind.speed;
   currentWindSpeed = document.querySelector(".wind");
-  currentWindSpeed.innerHTML = `Wind Speed: ${windSpeed} km/s`;
+  currentWindSpeed.innerHTML = `Wind Speed: ${windSpeed} m/s`;
   let currentMainIcon = document.querySelector(".mainicon");
   currentMainIcon.setAttribute(
     "src",
@@ -93,7 +93,7 @@ function showWeather(response) {
   currentTemp.innerHTML = `${currentTemperature}`;
   let windSpeed = response.data.wind.speed;
   currentWindSpeed = document.querySelector(".wind");
-  currentWindSpeed.innerHTML = `Wind Speed: ${windSpeed} km/s`;
+  currentWindSpeed.innerHTML = `Wind Speed: ${windSpeed} m/s`;
   let currentMainIcon = document.querySelector(".mainicon");
   currentMainIcon.setAttribute(
     "src",
