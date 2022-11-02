@@ -147,19 +147,32 @@ let celsiusTemp = null;
 
 search("Kyiv");
 
+function formatForecastDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
 function displayForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
-  forecast.forEach(function (forecastDay) {
-          forecastHTML =
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
         forecastHTML +
         `<div class="col-sm-2">
                   <div class="card" id="day-card">
                     <div class="card-body">
-                      <h5 class="card-title">${forecastDay.dt}</h5>
-                      <img class="icon" src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="" />
+                      <h5 class="card-title">${formatForecastDay(
+                        forecastDay.dt
+                      )}</h5>
+                      <img class="icon" src="http://openweathermap.org/img/wn/${
+                        forecastDay.weather[0].icon
+                      }@2x.png" alt="" />
                       <div class="forecast-temperature-day">
                         ${Math.round(forecastDay.temp.day)}° </div>
                         <div class="forecast-temperature-night">
@@ -168,10 +181,10 @@ function displayForecast(response) {
                   </div>
                 </div>
          `;
-  }
-
-    forecastHTML = forecastHTML + `</div>`;
-    forecastElement.innerHTML = forecastHTML;
+    }
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
 }
 
 function getForecast(coordinates) {
