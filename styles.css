@@ -73,7 +73,7 @@ form {
 .card-body {
   height: 200px;
   width: 75px;
-  color: #0000;
+  color: black;
 }
 
 .forecast-temperature-night {
